@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dot</title>
+    <style>
+        .circle {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .dot {
+            height: 200px;
+            width: 200px;
+            background-color: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle">
+        <span class="dot" id="dotc"></span>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let circle = $("#dotc");
+            let size = 200;
+            let count = 0;
+            const colorBox = ["red", "green", "blue"];
+
+            function increaseDot() {
+                size += 10;
+                count += 1;
+                if (size > 420) {
+                    size = 200;
+                }
+                if (count > 2) {
+                    count = 0;
+                }
+                circle.css({
+                    "height": size + "px",
+                    "width": size + "px",
+                    "background-color": colorBox[count]
+                });
+            }
+
+            function decreaseDot() {
+                size -= 5;
+                count -= 1;
+                if (size < 200) {
+                    size = 200;
+                }
+                if (count < 0) {
+                    count = 2;
+                }
+                circle.css({
+                    "height": size + "px",
+                    "width": size + "px",
+                    "background-color": colorBox[count]
+                });
+            }
+
+            circle.on("click", increaseDot);
+            circle.on("mouseover", decreaseDot);
+            circle.on("mouseout", decreaseDot);
+        });
+    </script>
+</body>
+
+</html>

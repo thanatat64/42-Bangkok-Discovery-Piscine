@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>calculator</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #n1{
+            margin-right: 5px;
+        }
+        #n2{
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" id="n1">
+        <select name="operators" id="operators">
+            <option value="plus">+</option>
+            <option value="minus">-</option>
+            <option value="mult">*</option>
+            <option value="div">/</option>
+            <option value="mod">%</option>
+        </select>
+        <input type="text" id="n2">
+        <input type="submit" value="Try me !" onclick="calculate()">
+
+    </div>
+</body>
+<script>
+    let res
+    let calculate = () => {
+        let opt = document.getElementById("operators").value;
+        let left_ip = parseFloat(document.getElementById("n1").value);
+        let right_ip = parseFloat(document.getElementById("n2").value);
+        if (left_ip >= 0 && right_ip >= 0 && left_ip == parseInt(left_ip) && right_ip == parseInt(right_ip)) {
+            
+            if (opt == "plus") {
+                res = left_ip + right_ip;
+            }
+            else if (opt == "minus") {
+                res = left_ip - right_ip;
+            }
+            else if (opt == "mult") {
+                res = left_ip * right_ip;
+            }
+            else if (((opt == "div") || (opt == "mod")) && (right_ip == 0)) {
+                res = "It’s over 9000!";
+            }
+            else if (opt == "div") {
+                res = left_ip / right_ip;
+            }
+            else if (opt == "mod") {
+                res = left_ip % right_ip;
+            }
+            console.log(res)
+            alert(res)
+        } 
+        else {
+            alert("Error :(");
+        }
+    }
+    setInterval(function () { alert("Please, use me...") }, 30000);
+</script>
+
+</html>

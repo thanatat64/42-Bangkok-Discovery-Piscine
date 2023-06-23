@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+table{ width: 100%;
+        border-collapse: collapse;
+        height: 100vh;
+        border: 2px solid;}
+td{
+        font-size: 20px;
+    }
+#colLeft{
+    background-color: teal;
+}
+#colRight{
+    background-color: tomato;
+}

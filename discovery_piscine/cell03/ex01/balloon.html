@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dot</title>
+    <style>
+        .circle {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .dot {
+            height: 200px;
+            width: 200px;
+            background-color: red;
+            border-radius: 50%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle">
+        <span class="dot" id="dotc" onclick="increaseDot()" onmouseover="decraseDot()" onmouseout="decraseDot()"></span>
+    </div>
+</body>
+<script>
+    let circle = document.getElementById("dotc");
+    let size = 200;
+    let count = 0;
+    const colorBox = ["red","green","blue"];
+    let increaseDot = () => {
+        size += 10;
+        count += 1;
+        if (size > 420) {
+            size = 200;
+        }
+        if (count > 2) {
+            count = 0;
+        }
+        circle.style.height = size + "px";
+        circle.style.width = size + "px";
+        circle.style.backgroundColor = colorBox[count]
+    }
+    let decraseDot = () =>{
+        size -= 5;
+        count -= 1;
+        if(size<200){
+            size = 200;
+        }
+        if (count<0) {
+            count = 2;
+        }
+        circle.style.height = size + "px";
+        circle.style.width = size + "px";
+        circle.style.backgroundColor = colorBox[count]
+    }
+</script>
+
+</html>

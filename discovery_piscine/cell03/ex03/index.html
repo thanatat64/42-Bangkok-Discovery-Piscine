@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To Do List</title>
+    <style>
+        body{
+            background-color: beige;
+        }
+        h1{text-align: center;}
+        button{
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 10px;
+            padding-left: 40px;
+            padding-right: 40px;
+            margin-left: 5px;
+            border-radius: 10px;
+            font-weight: bold;
+            background-color: burlywood;
+        }
+        .table{
+            border: 0px;
+            background-color: inherit;
+        }
+        .ToDoList{
+            background-color: whitesmoke;
+            padding: 5px;
+            margin-bottom: 5px;
+            background-color:darksalmon;
+            opacity: 0.5;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 16px;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+            text-align: start;
+        }
+    </style>
+</head>
+<body>
+    <h1>To Do List</h1>
+    <div id="ft_list" class="table"></div>
+    <button onclick="createToDo()">New</button>
+</body>
+<script src="todo.js"></script>
+</html>

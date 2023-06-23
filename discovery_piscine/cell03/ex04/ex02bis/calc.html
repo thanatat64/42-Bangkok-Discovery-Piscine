@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #n1 {
+            margin-right: 5px;
+        }
+
+        #n2 {
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" id="n1">
+        <select name="operators" id="operators">
+            <option value="plus">+</option>
+            <option value="minus">-</option>
+            <option value="mult">*</option>
+            <option value="div">/</option>
+            <option value="mod">%</option>
+        </select>
+        <input type="text" id="n2">
+        <input type="submit" value="Try me !" id="calculateBtn">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let res;
+            let calculate = function () {
+                let opt = $("#operators").val();
+                let left_ips = $("#n1").val();
+                let right_ips = $("#n2").val();
+                //regular expression
+                // \d 0-9
+                // + 1 or more 123a123
+                // ^ check first digit 123a true
+                //$ check last digit 123a false
+                //^\d+$ 123a false
+                if (/^\d+$/.test(left_ips) && /^\d+$/.test(right_ips)) {
+                    let left_ip = parseFloat(left_ips);
+                    let right_ip = parseFloat(right_ips);
+                    if (opt == "plus") {
+                        res = left_ip + right_ip;
+                    } else if (opt == "minus") {
+                        res = left_ip - right_ip;
+                    } else if (opt == "mult") {
+                        res = left_ip * right_ip;
+                    } else if (opt == "div" && right_ip != 0) {
+                        res = left_ip / right_ip;
+                    } else if (opt == "mod" && right_ip != 0) {
+                        res = left_ip % right_ip;
+                    } else if (((opt == "div") || (opt == "mod")) && (right_ip == 0)) {
+                        res = "It’s over 9000!";
+                    }
+
+                    console.log(res);
+                    alert(res);
+                } else {
+                    alert("Error :(");
+                }
+            };
+
+            $("#calculateBtn").click(calculate);
+
+            setInterval(function () {
+                alert("Please, use me...");
+            }, 30000);
+        });
+    </script>
+</body>
+
+</html>
